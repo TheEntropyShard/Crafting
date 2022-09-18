@@ -142,9 +142,11 @@ public class Crafting extends Application {
             for(int i = 0; i < 9; i++) {
                 Slot slot = this.slots[i];
                 if(event.getPickResult().getIntersectedNode().equals(slot)) {
-                    slot.setImage(this.cursor.getImage());
-                    slot.setSlotId(this.cursor.getSlotId());
-                    this.checkRecipe();
+                    if(this.cursor.getImage() != null) {
+                        slot.setImage(this.cursor.getImage());
+                        slot.setSlotId(this.cursor.getSlotId());
+                        this.checkRecipe();
+                    }
                 }
             }
         });
@@ -168,9 +170,11 @@ public class Crafting extends Application {
                 slot.setX(veryUsefulVar % 3 * 36 + 60);
                 slot.setY(Math.floor(veryUsefulVar / 3.0f) * 36 + 34);
                 slot.setOnMousePressed(event -> {
-                    slot.setSlotId(this.cursor.getSlotId());
-                    slot.setImage(this.cursor.getImage());
-                    this.checkRecipe();
+                    if(this.cursor.getImage() != null) {
+                        slot.setSlotId(this.cursor.getSlotId());
+                        slot.setImage(this.cursor.getImage());
+                        this.checkRecipe();
+                    }
                 });
             } else {
                 slot.setX(veryUsefulVar % 9 * 36 + 16);
@@ -323,8 +327,10 @@ public class Crafting extends Application {
                 this.slots[8].getSlotId() == recipe[8]
         ) {
             this.changeRecipe();
-            this.score += 23;
-            this.updateScore();
+            if(this.timer != 0) {
+                this.score += 23;
+                this.updateScore();
+            }
             this.root.getChildren().remove(this.cursor);
             this.correctRecipe.play();
         }
