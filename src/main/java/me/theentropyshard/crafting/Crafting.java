@@ -242,6 +242,7 @@ public class Crafting extends Application {
         this.timerRunning.stop();
 
         this.timerStarted.play();
+        this.timerRunning.setCycleCount(AudioClip.INDEFINITE);
         this.timerRunning.play();
 
         this.timerTimeline.stop();
@@ -250,6 +251,7 @@ public class Crafting extends Application {
 
     private void stopTimer() {
         this.timerTimeline.stop();
+        this.timerRunning.stop();
     }
 
     private void destroyCursor() {
