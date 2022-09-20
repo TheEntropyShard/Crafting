@@ -13,4 +13,4 @@ command line using ```java -jar Crafting.jar```. Since it is a JavaFX applicatio
 it does not launch from double-click.
 
 If you have Java 11 or higher, then it will not be so simple,
-search how to do it on YouTube.
+search how to do it on YouTube or clone the repository and run it in an IDE.
